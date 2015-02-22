@@ -24,9 +24,6 @@ def gettags(path, tag):
             #Track Title
             if tag=="track_title":
                 return audio["TIT2"].text[0]
-            #Year
-            if tag=="year":
-                return audio["TDRC"].text[0]
 
         except KeyError:
             pass
@@ -53,9 +50,6 @@ def movefile(path, copymove):
         failedtags.append(path)
         return
     if TRACK_TITLE==None:
-        failedtags.append(path)
-        return
-    if YEAR==None:
         failedtags.append(path)
         return
 
