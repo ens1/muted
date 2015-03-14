@@ -3,7 +3,7 @@
 
 
 from mutagen.id3 import ID3
-import os, fnmatch, mutagen, sys, shutil, getopt
+import os, fnmatch, mutagen, sys, shutil, getopt, re
 
 
 failed=[]
@@ -23,7 +23,7 @@ def gettags(path, tag):
                 return audio["TRCK"].text[0]
             #Track Title
             if tag=="track_title":
-                return audio["TIT2"].text[0]
+                return re.sub('/', '', audio["TIT2"].text[0])
 
         except KeyError:
             pass
